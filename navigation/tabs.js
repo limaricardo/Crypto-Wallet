@@ -10,6 +10,21 @@ import { COLORS, icons } from "../constants"
 
 const Tab = createBottomTabNavigator()
 
+const TabBarCustomButton = ({children, onPress}) => {
+    return (
+        <TouchableOpacity
+            style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+            onPress={onPress}
+        >
+            {children}
+        </TouchableOpacity>
+    )
+}
+
 const Tabs = () => {
 
     return (
@@ -66,7 +81,13 @@ const Tabs = () => {
                                 isTrade={true}
                             />
                         )
-                    }
+                    },
+                    tabBarButton: (props) => (
+                        <TabBarCustomButton
+                            {...props}
+                            onPress={ () => console.log("Trade Button")}
+                        />
+                    )
                 }}
             />
             <Tab.Screen
